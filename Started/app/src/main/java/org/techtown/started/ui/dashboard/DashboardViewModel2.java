@@ -1,16 +1,16 @@
-package org.techtown.started.ui.notifications;
+package org.techtown.started.ui.dashboard;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class NotificationsViewModel extends ViewModel {
+public class DashboardViewModel2 extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public NotificationsViewModel() {
+    public DashboardViewModel2() {
         mText = new MutableLiveData<>();
-        mText.setValue( "This is notifications fragment" );
+        mText.setValue( "고색 솔대 공원 : 2시간");
     }
 
     public LiveData<String> getText() {

@@ -4,13 +4,25 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import org.techtown.started.ui.team.User;
+
+import java.util.ArrayList;
+
 public class DashboardViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
     public DashboardViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue( "This is dashboard fragment" );
+
+
+
+        mText.setValue("하이");
+
+
     }
 
     public LiveData<String> getText() {
