@@ -44,7 +44,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
         holder.team_PhoneNumber.setText(arrayList.get(position).getPhoneNumber());
         holder.team_Name.setText(arrayList.get(position).getName());
-        holder.team_BackNumber.setText(arrayList.get(position).getBackNumber());
+        holder.team_BackNumber.setText(String.valueOf(arrayList.get(position).getBackNumber()));
     }
 
     @Override

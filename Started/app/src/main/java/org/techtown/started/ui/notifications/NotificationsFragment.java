@@ -10,6 +10,9 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.techtown.started.R;
 
 import java.util.ArrayList;
@@ -21,12 +24,26 @@ public class NotificationsFragment extends Fragment {
     //private NotificationsViewModel notificationsViewModel;
     ListView listview ;
     ListViewAdapter adapter;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference myRef = database.getReference();
 
     ArrayList<ListViewItem> itemList = new ArrayList<ListViewItem>() ;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate( R.layout.fragment_notifications, container, false );
+
+
+        Button Attend = (Button) root.findViewById(R.id.Attend) ;
+        Attend.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myRef.push().setValue("Hello, World!");
+
+            }
+        });
+
+
         /*
         notificationsViewModel =
 
@@ -163,7 +180,6 @@ public class NotificationsFragment extends Fragment {
                 adapter.notifyDataSetChanged() ;
             }
         });
-
 
         return root;
     }
