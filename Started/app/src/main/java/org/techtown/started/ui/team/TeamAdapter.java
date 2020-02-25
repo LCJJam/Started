@@ -42,7 +42,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> im
     public int getItemCount() {
         return items.size();
     }
-    public  void addIte(Team item){
+    public  void addItem(Team item){
         items.add( item );
     }
     public void setItems(ArrayList<Team> items){
