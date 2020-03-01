@@ -19,13 +19,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class NotificationsFragment extends Fragment {
+public class NotificationsFragment extends Fragment { // 팀 기록 정렬
 
     //private NotificationsViewModel notificationsViewModel;
     ListView listview ;
     ListViewAdapter adapter;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRef = database.getReference();
+
+
+    private int mBtnClickToggle;
+
 
     ArrayList<ListViewItem> itemList = new ArrayList<ListViewItem>() ;
 
@@ -97,30 +101,33 @@ public class NotificationsFragment extends Fragment {
         listview.setAdapter(adapter);
 
 
-        Button buttonNoAsc = (Button) root.findViewById(R.id.buttonNoAsc) ;
+        final Button buttonNoAsc = (Button) root.findViewById(R.id.buttonNoAsc) ;
         buttonNoAsc.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Comparator<ListViewItem> noAsc = new Comparator<ListViewItem>() {
-                    @Override
-                    public int compare(ListViewItem item1, ListViewItem item2) {
-                        int ret ;
 
-                        if (item1.getBackNumber() < item2.getBackNumber())
-                            ret = -1 ;
-                        else if (item1.getBackNumber() == item2.getBackNumber())
-                            ret = 0 ;
-                        else
-                            ret = 1 ;
-
-                        return ret ;
-
-                        // 위의 코드를 간단히 만드는 방법.
-                        // return (item1.getNo() - item2.getNo()) ;
-                    }
-                } ;
-
-                Collections.sort(itemList, noAsc) ;
+                if (mBtnClickToggle == 1) { // 토글 값이 1일 때
+                    buttonNoAsc.setText("번호순");
+                    mBtnClickToggle = 0;
+                    Comparator<ListViewItem> noAsc = new Comparator<ListViewItem>() {
+                        @Override
+                        public int compare(ListViewItem item1, ListViewItem item2) {
+                            return (item1.getBackNumber() - item2.getBackNumber()) ;
+                        }
+                    } ;
+                    Collections.sort(itemList, noAsc) ;
+                }
+                else { // 토글 값이 1이 아닐 때 (0)
+                    buttonNoAsc.setText("번호역순");
+                    mBtnClickToggle = 1;
+                    Comparator<ListViewItem> noAsc = new Comparator<ListViewItem>() {
+                        @Override
+                        public int compare(ListViewItem item1, ListViewItem item2) {
+                            return (item2.getBackNumber() - item1.getBackNumber()) ;
+                        }
+                    } ;
+                    Collections.sort(itemList, noAsc) ;
+                }
                 adapter.notifyDataSetChanged() ;
             }
         });
