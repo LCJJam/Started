@@ -1,36 +1,24 @@
 package org.techtown.started.ui.home;
 
 public class Notice {
-    public Notice(int number, String title, String contents, String date) {
-        Number = number;
+    private String Title;
+    private String Contents;
+    private String Date;
+    private int Number;
+
+    public Notice(String title, String contents, String date, int number) {
         Title = title;
         Contents = contents;
         Date = date;
-    }
-
-    int Number;
-    String Title;
-    String Contents;
-    String Date;
-    // long now = System.currentMills();
-    // Date date = new Date(now);
-    // SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-    // String getTime = simpleDate.format(mDate);
-
-    public int getNumber() {
-        return Number;
-    }
-
-    public void setNumber(int number) {
         Number = number;
     }
-
+    public Notice(){}
     public String getTitle() {
         return Title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.Title = title;
     }
 
     public String getContents() {
@@ -38,7 +26,7 @@ public class Notice {
     }
 
     public void setContents(String contents) {
-        Contents = contents;
+        this.Contents = contents;
     }
 
     public String getDate() {
@@ -48,4 +36,16 @@ public class Notice {
     public void setDate(String date) {
         this.Date = date;
     }
+
+    public int getNumber() {
+        return Number;
+    }
+
+    public void setNumber(int number) {
+        this.Number = number;
+    }
+
+
+
+
 }

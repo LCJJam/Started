@@ -5,6 +5,7 @@ public class Schedule {
         Spot = spot;
         Match_date = match_date;
     }
+    public Schedule(){}
 
     public String getSpot() {
         return Spot;

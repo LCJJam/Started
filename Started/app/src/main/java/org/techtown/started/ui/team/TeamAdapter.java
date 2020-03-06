@@ -127,12 +127,4 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> im
             PhoneNumber = itemView.findViewById( R.id.team_PhoneNumber );
         }
     }
-    /*
-    public void setItem(Team item){
-        String name = item.getName();
-        String phoneNumber = item.getPhoneNumber();
-        String backNumber = item.getBackNumber();
-        int profileImage = item.getProfileImage();
-    }
-    */
 }
